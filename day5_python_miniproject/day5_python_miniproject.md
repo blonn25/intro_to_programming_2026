@@ -46,11 +46,8 @@ python DNA_to_AA.py
 
 Where is the path to the DNA sequence file? ./mystery_protein.fa
 
-DNA -> RNA: (saved in ./output_RNA.fa)
-AUGGACAAGGACGAG
+MGTKGTEGRWESCRWEASLEGRGRGGRTARISRYQGSRTDLGRGTLEREGRWERKGGAGTIT
 
-RNA -> AA: (saved in ./output_AA.fa)
-MDVDE
 ```
 ### For next class:
 ```bash
