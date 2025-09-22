@@ -186,7 +186,29 @@ plt.show()
 Given an user input DNA sequence:
 1) Print the sequence back to the user
 2) Print one hot encoded matrix of the user's DNA input
-3) Show user heat map, where one axis is DNA base number, another is one hot index, and color is 0 or 1.
+
+One-hot encoding is a common method to store categorical data as binary. It stores each category as a unique vector made of 0s and 1s, and can be combined in a
+larger array. For example, the DNA sequence ```dna_seq = 'ATGCAT'``` might have the one-hot encoded representation of:
+
+       [1. 0. 0. 0.] 
+       [0. 0. 0. 1.]
+       [0. 0. 1. 0.]
+       [0. 1. 0. 0.]
+       [1. 0. 0. 0.]
+       [0. 0. 0. 1.]
+
+This matrix has the dimensions ```m x n```, where ```m``` is the length of the DNA sequence and ```n``` the number of unique categories. In this case, we have a 6x4 matrix, since our DNA sequence has 6 base pairs and 4 possible categories. A value of 1 in any position along axis ```m``` means that the category is represented at that position. So, in the top-right position of the matrix, we see a 1. This denotes that A is in the first position of sequence. 
+
+       position 1:[1. 0. 0. 0.] 
+       position 2:[0. 0. 0. 1.]
+       position 3:[0. 0. 1. 0.]
+       position 4:[0. 1. 0. 0.]
+       position 5:[1. 0. 0. 0.]
+       position 6:[0. 0. 0. 1.]
+                   A  C  G  T
+  
+  
+3) Show user heat map, where one axis is DNA base number, another is one hot index, and color is 0 or 1. I think the function ```plt.imshow()``` will be helpful! 
 
 <div align="center">
   <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*SMJejOb3mUJcpV6bwhjnPw.png" alt="one-hot"/>
