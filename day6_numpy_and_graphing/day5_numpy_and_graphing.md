@@ -197,7 +197,7 @@ larger array. For example, the DNA sequence ```dna_seq = 'ATGCAT'``` might have 
        [1. 0. 0. 0.]
        [0. 0. 0. 1.]
 
-This matrix has the dimensions ```m x n```, where ```m``` is the length of the DNA sequence and ```n``` the number of unique categories. In this case, we have a 6x4 matrix, since our DNA sequence has 6 base pairs and 4 possible categories. A value of 1 in any position along axis ```m``` means that the category is represented at that position. So, in the top-right position of the matrix, we see a 1. This denotes that A is in the first position of sequence. 
+This matrix has the dimensions ```m x n```, where ```m``` is the length of the DNA sequence and ```n``` the number of unique categories. In this case, we have a 6x4 matrix, since our DNA sequence has 6 base pairs and 4 possible categories. A value of 1 in any position along axis ```m``` means that the category is represented at that position. So, in the top-right position of the matrix, we see a 1. This denotes that A is in the first position of the sequence. 
 
        position 1:[1. 0. 0. 0.] 
        position 2:[0. 0. 0. 1.]
