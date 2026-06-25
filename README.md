@@ -1,12 +1,12 @@
 # Introduction to Computing for Biophysicists
 #### (AKA: Intro to Programming / Programming Fundamentals)
-## Fall 2025 Syllabus
+## Fall 2026 Syllabus
 
-**Course Days/Hours:** Sept 9 – 12, 16 – 19 from 9-11AM
+**Course Days/Hours:** Sept 8 – 10, 14 – 17 from 9-11AM
 
 **Location:** GH 227 - Teaching Lab
 
-**Instructor(s):** [Yulia Gutierrez](mailto:yulia.gutierrez@ucsf.edu)
+**Instructor(s):** [Beau Lonnquist](mailto:beau.lonnquist@ucsf.edu)
 
 ## Course Description:
 Computing is as essential as pipetting for success in graduate school. This practical course is intended to ensure that students without any background in scientific computing can become conversant in the fundamentals they need to succeed in our program, including:
