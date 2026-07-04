@@ -300,6 +300,15 @@ scp /path/to/local/file zack@dt1.wynton.ucsf.edu:/wynton/home/rotation/zack/
 Replace `/path/to/local/file` with the path to the file on your local machine, and `zack` with your Wynton username. `/wynton/home/rotation/zack/` is where the file will land.
 
 
+#### Using Globus for Data Transfer
+
+Alternatively, you may find it more convenient to transfer files to/from Wynton using Globus. You can find more information on how to set up Globus with Wynton on this website:
+
+[https://wynton.ucsf.edu/hpc/transfers/globus.html](https://wynton.ucsf.edu/hpc/transfers/globus.html)
+
+Globus can also be used to transfer directly from Wynton to UCSF Box - convenient for larger data transfers which you may not want to store on your personal machine.
+
+
 #### Copying Entire Directories
 
 To copy entire directories, use the recursive `-r` option with `scp`:
