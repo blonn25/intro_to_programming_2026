@@ -10,13 +10,20 @@ Credit: Most of the information from this page was cobbled together using conten
   - [What is FAC?](#what-is-fac)
   - [What is the difference between CoreHPC and FAC?](#what-is-the-difference-between-corehpc-and-fac)
   - [Accessing CoreHPC](#accessing-corehpc)
-  - [Signing into CoreHPC](#signing-into-corehpc)
+  - [Accessing CoreHPC via Open OnDemand (beta)](#accessing-corehpc-via-open-ondemand-beta)
 - [Running Your First Job: 'Hello World' on the CoreHPC Cluster](#running-your-first-job-hello-world-on-the-corehpc-cluster)
   - [Basics of Terminal Use](#basics-of-terminal-use)
   - [Running a 'Hello World' Job](#running-a-hello-world-job)
-  - [CoreHPC ↔ Your Computer File Transfer](#files-transfer-between-your-computer-and-corehpc-with-scp)
+- [File Transfer Between Your Computer and CoreHPC](#file-transfer-between-your-computer-and-corehpc)
+  - [Using SCP for File Transfer](#using-scp-for-file-transfer)
+  - [Using Globus for Data Transfer](#using-globus-for-data-transfer)
+  - [Using Drive Mapping for File Transfer](#using-drive-mapping-for-file-transfer)
+- [Where to Store Your Files](#where-to-store-your-files)
+  - [Storage Options](#storage-options)
+  - [Moving Files Between Storage Options](#moving-files-between-storage-options)
 - [Final Notes](#final-notes)
-- [Need Help?](#Need-Help?)
+  - [Good File System Practices](#good-file-system-practices-dont-be-the-person-who-breaks-corehpc)
+  - [Need Help?](#need-help)
 ---
 
 ### What is CoreHPC?
@@ -39,7 +46,7 @@ The [Facility for Advanced Computing (FAC)](https://it.ucsf.edu/service/facility
 
 CoreHPC is UCSF’s high-performance computing (HPC) environment designed for large-scale data processing, parallel workflows, and compute-intensive research. It offers access to powerful compute nodes, GPU acceleration, high-speed scratch storage, and Slurm-based job scheduling.
 
-The [Facility for Advanced Compute (FAC)](https://it.ucsf.edu/service/facility-advanced-computing-fac), by contrast, is a broader research infrastructure platform focused on secure, compliant data services. FAC supports storage, virtual machine hosting, and server co-location, with a strong emphasis on IS-3 compliance and support for P1 through P4 data. Additionally, FAC provides foundational storage infrastructure that is directly accessible from within the CoreHPC environment, enabling seamless integration between compute and data services. 
+The [Facility for Advanced Computing (FAC)](https://it.ucsf.edu/service/facility-advanced-computing-fac), by contrast, is a broader research infrastructure platform focused on secure, compliant data services. FAC supports storage, virtual machine hosting, and server co-location, with a strong emphasis on IS-3 compliance and support for P1 through P4 data. Additionally, FAC provides foundational storage infrastructure that is directly accessible from within the CoreHPC environment, enabling seamless integration between compute and data services. 
 
 ### Accessing CoreHPC
 
@@ -52,7 +59,7 @@ To connect to CoreHPC, you will need to use the ***terminal***.
 The **terminal** is a text-based interface that allows you to interact directly with your computer by typing commands, rather than using a graphical interface like clicking on icons. It might seem intimidating at first, but it's a powerful tool that gives you a lot of control over your computational environment.
 </details>
 
-Perform the following steps ():
+Perform the following steps:
 1. Connect to the UCSF VPN (this is still required, even when connected to the UCSFwpa network).
 
 2. Open the terminal:
@@ -213,7 +220,7 @@ Now that you're familiar with basic commands, let us set up and run a simple job
    ```
    - Use `nano` (a terminal-based text editor) to enter the following script:
      ```sh
-     #!/bin/bash                      # Run job as a Bash shell [IMPORTANT]
+     #!/bin/bash
      #SBATCH --job-name=hello_world   # Name of the job
      #SBATCH --output=hello.out       # Name of the output file
      
@@ -235,9 +242,9 @@ For future reference, here's a more detailed sample submission script provided b
 ```sh
 #!/bin/bash
 #SBATCH --mem=4g                # Job memory request.
-#SBATCH --ntasks=1              # How many instances of the script will run, if using --nodes, set --ntasks to the same value.
+#SBATCH --ntasks=13             # How many instances of the script will run, if using --nodes, set --ntasks to the same value.
 #SBATCH --cpus-per-task=64      # How many CPUs per instance of the script will be needed.
-#SBATCH --partition=gpu         # Run on partition "dgx" (e.g. not the default partition called "long").
+#SBATCH --partition=gpu         # Run on partition "gpu" (e.g. not the default "cpu" partition).
 #SBATCH --gres=gpu:1            # Allocate 1 GPU resource for this job.
 ### OPTIONAL
 #SBATCH --nodes=13              # Run on 13 nodes (if resources available).  
@@ -316,7 +323,7 @@ This is only a simple script, but there are a number of great examples of more c
 
 ### Using SCP for File Transfer
 
-I am not familiar with using `scp` for file transfer on CoreHPC, but it is a common method for transferring files between your local machine and a remote server. You may explore this option on your own, but we recommend using Globus or drive mapping to access CoreHPC files from your local machine.
+We will not spend time exploring `scp` (secure copy) for file transfer in this introduction. However, it is a common method for transferring files between your local machine and a remote server. You may explore this option on your own, but we recommend using Globus or drive mapping to access CoreHPC files from your local machine.
 
 ### Using Globus for Data Transfer
 
@@ -339,7 +346,7 @@ If you want to transfer files from or to your local machine, you need to set up 
 
 7. [online] (Optional) If you require to transfer data to or from Globus High Assurance Collections, your account must be associated with the “University of California San Francisco High Assurance Globus Plus” Group. To join the group, login to [globus.org](https://www.globus.org/) with your UCSF MyAccess credentials, select the groups side tab, deselect “My Groups”, and search for “University of California San Francisco” - locate the “University of California San Francisco High Assurance Globus Plus” group and hit the join. The person who manages the UCSF Globus subscription will approve any account associated with a UCSF Email Address.
 
-***Set up a Globus Collection for your Wynton account:***
+***Set up a Globus Collection for your CoreHPC account:***
 If you want to transfer files from or to CoreHPC, you need to set up the ‘UCSF CoreHPC - User Home’ and ‘UCSF CoreHPC - User Scratch’ Collections. Below is an outline on how to do this.
 
 1. [online] Go to [Globus.org](https://www.globus.org/) and log in with your UCSF MyAccess credentials.
@@ -370,7 +377,7 @@ Perhaps the most important - and also most confusing - aspect of CoreHPC is wher
 
   This is your personal space on the CoreHPC cluster. You have 20GB of storage here and it will not be cleared during maintenance. Use this sparingly for small files and configuration files. This directory is not for heavy computational lifting.
 
-  Access your home directory by typing `cd` in the terminal, or explicitly specifying the path: `cd /home/<user>`.
+  Access your home directory by typing `cd` in the terminal, or explicitly specifying the path: `cd /home/remote/<user>`.
 
 2. **User Scratch Storage**
 
@@ -407,7 +414,7 @@ This is particularly useful for copying interesting scientific outputs to your g
 ## Final Notes
 
 ### Good File System Practices (don't be *the* person who breaks CoreHPC)
-- **Distribute Files:** Spread out files across multiple directories, including SGE output and error files.
+- **Distribute Files:** Spread out files across multiple directories, including SLURM output and error files.
 - **Prefer Larger Files:** Use fewer, larger files rather than many small ones.
 - **Limit Directory I/O:** Keep the number of reads and writes to a single directory reasonable.
 
