@@ -138,7 +138,7 @@ CONGRATULATIONS! You are now connected to the CoreHPC cluster. You can now run j
 
 ### Accessing CoreHPC via Open OnDemand (beta):
 
-Instead of logging into CoreHPC via the terminal, you can also access CoreHPC via Open OnDemand (OOD). OOD is a web-based interface that allows you to access CoreHPC resources without using the terminal. It provides access to software such as MatLab, VSCode, R Studio and JupyterLab. You can access OOD by visiting [https://ood.corehpc.ucsf.edu](https://ood.corehpc.ucsf.edu) and logging in with your UCSF credentials.
+Instead of logging into CoreHPC via the terminal, you can also access CoreHPC via Open OnDemand (OOD). OOD is a web-based interface that allows you to access CoreHPC resources without using the terminal. It provides access to software such as MatLab, VSCode, R Studio and JupyterLab. You can access OOD by visiting [https://chpc-ucsf-ondemand-vm1.corehpc.ucsf.edu/](https://chpc-ucsf-ondemand-vm1.corehpc.ucsf.edu/) and logging in with your UCSF credentials.
 
 Please note that OOD is currently in a beta development phase and changes may occur without warning. That said, please feel free to test OOD and send any comments, questions, feedback to [corehpc@ucsf.edu](mailto:corehpc@ucsf.edu).
 
