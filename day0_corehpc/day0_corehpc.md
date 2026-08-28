@@ -15,11 +15,7 @@ Credit: Most of the information from this page was cobbled together using conten
   - [Basics of Terminal Use](#basics-of-terminal-use)
   - [Running a 'Hello World' Job](#running-a-hello-world-job)
   - [CoreHPC ↔ Your Computer File Transfer](#files-transfer-between-your-computer-and-corehpc-with-scp)
-- [Beyond the Basics](#beyond-the-basics)
-  - [Overview of CoreHPC Nodes](#overview-of-corehpc-nodes)
-  - [CoreHPC Job Queues](#corehpc-job-queues)
-  - [Using Scratch Storage](#using-scratch-storage)
-  - [Additional Info / Tips](#additional-info--tips)
+- [Final Notes](#final-notes)
 - [Need Help?](#Need-Help?)
 ---
 
@@ -316,108 +312,106 @@ Congratulations! You've successfully submitted and run a simple 'Hello World' jo
 
 This is only a simple script, but there are a number of great examples of more complex scripts on the CoreHPC wiki' [CoreHPC Submission Examples](https://wiki.library.ucsf.edu/spaces/CHPC/pages/736476672/CoreHPC+Submission+Examples) page. Here you can learn more about how to request different resources, such as GPUs, and how to run jobs in parallel across multiple nodes.
 
-### Files Transfer Between Your Computer and CoreHPC with **`scp`**
+## File Transfer Between Your Computer and CoreHPC
 
-The `scp` (secure copy) command allows you to securely transfer files between your machine and CoreHPC via SSH.
+### Using SCP for File Transfer
 
-#### CoreHPC → Local Machine
+I am not familiar with using `scp` for file transfer on CoreHPC, but it is a common method for transferring files between your local machine and a remote server. You may explore this option on your own, but we recommend using Globus or drive mapping to access CoreHPC files from your local machine.
 
-To copy a file from CoreHPC to your local machine, on your local machine, type:
+### Using Globus for Data Transfer
+
+[Globus](https://www.globus.org/) is a non-profit service for moving, syncing, and sharing large amounts of data asynchronously in the background. Transfers are done from and to, so called, Collections. In order to perform a file transfer from one location to another using the Globus service, both ends must have a Collection. UCSF has a site license for Globus, and several UCSF departments and services, including the Wynton HPC environment, provide Globus Collection. This will allow you to transfer and share data efficiently with any other Globus user in the world.
+
+***Set up Globus on your local machine:***
+If you want to transfer files from or to your local machine, you need to set up a personal Collection on that machine. Below is an outline on how to do this. For full details, see the [Globus Docs How To](https://docs.globus.org/how-to/).
+
+1. [local] Make sure [Globus Connect Personal](https://www.globus.org/globus-connect-personal) is installed on your local machine (available for macOS, Linux, and MS Windows)
+
+2. [local] (optional) The default is that Globus will have access to all of the content under your home directory, e.g. when connected to Globus you will be able to browse it from the Global website online. To limit this, create a folder to be used solely for Globus transfers, e.g. `~/globus/`. Launch the ‘Globus Connect Personal’ software, go to ‘Preferences’ and change the ‘Access Path Configuration’ to `~/globus`. Then, click ‘Save’.
+
+3. [online] Setup a [Globus Connect Personal (GCP) Collection](https://app.globus.org/file-manager/gcp) for your local machine. Use one GCP collection per machine. This step will produce a ***GCP Security Key*** for your local machine. Make sure to write it down in a safe place. If you lose it, you will have to create a new GCP collection.
+
+4. [local] Launch the ‘Globus Connect Personal’ software, and enter your ***GCP Security Key*** code to connect.
+
+5. [online] Go to [Collection -> ‘Administered by You’](https://app.globus.org/collections?scope=administered-by-me), go to on your GCP Collection, and click on ‘Open in File Manager’. This will display the files and folders on your local computer. If you restricted access to ~/globus (Step 2), then it is only that folder that is accessible via Globus.
+
+6. [local] In the Globus Connect Personal software, make sure to disconnect when no longer needed.
+
+7. [online] (Optional) If you require to transfer data to or from Globus High Assurance Collections, your account must be associated with the “University of California San Francisco High Assurance Globus Plus” Group. To join the group, login to [globus.org](https://www.globus.org/) with your UCSF MyAccess credentials, select the groups side tab, deselect “My Groups”, and search for “University of California San Francisco” - locate the “University of California San Francisco High Assurance Globus Plus” group and hit the join. The person who manages the UCSF Globus subscription will approve any account associated with a UCSF Email Address.
+
+***Set up a Globus Collection for your Wynton account:***
+If you want to transfer files from or to CoreHPC, you need to set up the ‘UCSF CoreHPC - User Home’ and ‘UCSF CoreHPC - User Scratch’ Collections. Below is an outline on how to do this.
+
+1. [online] Go to [Globus.org](https://www.globus.org/) and log in with your UCSF MyAccess credentials.
+2. Then find the Collections menu on the left and click it.
+3. Then locate the [‘UCSF CoreHPC - User Home' collection](https://app.globus.org/file-manager/collections/e6390f3c-59bb-4c9e-b908-938375d88b37/overview).
+4. This will bring up the “Overview” of the [‘UCSF CoreHPC - User Home' collection](https://app.globus.org/file-manager/collections/e6390f3c-59bb-4c9e-b908-938375d88b37/overview).
+5. Click “Open in File Manager”.
+6. If you are prompted to login/authenticate, do so.
+7. You should now see your CoreHPC home directory in the Globus File Manager. You can now transfer files to and from your CoreHPC home directory using Globus.
+8. Repeat the above steps for the [‘UCSF CoreHPC - User Scratch' collection](https://app.globus.org/file-manager/collections/dd241e70-0935-4f48-b8c0-1351bc1e2c43/overview).
+
+***For future reference***: Globus can also be used to transfer directly from CoreHPC to UCSF Box - convenient for larger data transfers which you may not want to store on your personal machine.
+
+*Note:* these instructions were adapted from the [setup guide for Globus with Wynton](https://wynton.ucsf.edu/hpc/transfers/globus.html) (the cluster before CoreHPC). It may be useful to refer back to this page if you run into issues.
+
+### Using Drive Mapping for File Transfer
+
+Last but not least, you can also map FAC storage to your local machine. This allows you to access CoreHPC files as if they were on your local machine, making it easy to transfer files back and forth. To set up drive mapping, follow the instructions on this page:
+[https://it.ucsf.edu/how-to/fac-drive-mapping-instructions](https://it.ucsf.edu/how-to/fac-drive-mapping-instructions)
+
+## Where to Store Your Files
+
+### Storage Options
+
+Perhaps the most important - and also most confusing - aspect of CoreHPC is where to store your files. You have four primary options:
+
+1. **User Home Storage**
+
+  This is your personal space on the CoreHPC cluster. You have 20GB of storage here and it will not be cleared during maintenance. Use this sparingly for small files and configuration files. This directory is not for heavy computational lifting.
+
+  Access your home directory by typing `cd` in the terminal, or explicitly specifying the path: `cd /home/<user>`.
+
+2. **User Scratch Storage**
+
+  This is your personal high-performance storage area for temporary files. It is not backed up and will be purged during quarterly CoreHPC/FAC maintanence. Use this for large datasets, intermediate files, and temporary outputs.
+
+  Access your scratch directory by typing `cd /scratch/user/<user>` in the terminal.
+
+3. **Group Scratch Storage (FOR HEAVY COMPUTING)**
+
+  This is a shared storage area, and likely where you will perform most of your computational work. It is not backed up and may be purged during quarterly CoreHPC/FAC maintanence. This is an excellent choice for collaborative projects in your research group.
+
+  Access your group's scratch directory by typing `cd /mnt/scratch/group/CX500147_DS2` in the terminal. Do not store your filed directly in this directory. Instead, create a subdirectory with your username such as `/mnt/scratch/group/CX500147_DS2/<user>`.
+
+4. **Group FAC Storage (FOR YOUR MOST IMPORTANT DATA)**
+
+  This is a shared storage area for collaborative projects. It is backed up and persistent, but has limited storage capacity. Use this for files that need to be accessed by multiple users, important data outputs from experiments, and any other data you may want access to long-term. You share this storage with the other students in your cohort, so please be mindful of your storage usage.
+
+  Access your group's FAC directory by typing `cd /mnt/fac/CX500147_DS2` in the terminal. Do not store your filed directly in this directory. Instead, create a subdirectory with your username such as `/mnt/fac/CX500147_DS2/<user>`.
+
+My suggestion is to default to performing computation in your group scratch storage and saving any important outputs to your group FAC storage.
+
+### Moving Files Between Storage Options
+
+Now, if you perform computation in one location, you may later want to copy some of the outputs to your group FAC storage for long-term preservation. You can do this using the `cp` command in the terminal. For example, to copy the hello world output file from your home directory to your group FAC storage, you would type:
 
 ```sh
-scp zack@dt1.corehpc.ucsf.edu:/corehpc/home/rotation/zack/tests/hello_world.o201 /path/to/local/destination/
+[jdoe@chpc-ucsf-login-vm1 ~]$ cp /home/remote/<user>/tests/hello.out /mnt/fac/CX500147_DS2/<user>/
 ```
 
-Replace `zack` with your CoreHPC username, `/corehpc/home/rotation/zack/hello_world.o201` of the path of the file on CoreHPC, and `/path/to/local/destination/` with the path where you want the file to be saved on your local machine. (Note: we are using the data transfer node, `dt1`, rather than `log1` for moving the file. This isn't necessary but is recommended. More on this below.)
+This is particularly useful for copying interesting scientific outputs to your group FAC storage, which you can then access from your local machine via drive mapping.
 
+---
 
-#### Local Machine → CoreHPC
-
-On your local machine:
-
-```sh
-scp /path/to/local/file zack@dt1.corehpc.ucsf.edu:/corehpc/home/rotation/zack/
-```
-
-Replace `/path/to/local/file` with the path to the file on your local machine, and `zack` with your CoreHPC username. `/corehpc/home/rotation/zack/` is where the file will land.
-
-
-#### Copying Entire Directories
-
-To copy entire directories, use the recursive `-r` option with `scp`:
-
-```sh
-# CoreHPC to your local machine:
-scp -r zack@dt1.corehpc.ucsf.edu:/corehpc/home/rotation/zack/tests /path/to/local/destination/
-
-# Your machine to CoreHPC
-scp -r /path/to/local/directory zack@log1.corehpc.ucsf.edu:/corehpc/home/rotation/zack/
-```
-
-
-#### Using Globus for Data Transfer
-
-Alternatively, you may find it more convenient to transfer files to/from CoreHPC using Globus. You can find more information on how to set up Globus with CoreHPC on this website:
-
-[https://corehpc.ucsf.edu/hpc/transfers/globus.html](https://corehpc.ucsf.edu/hpc/transfers/globus.html)
-
-Globus can also be used to transfer directly from CoreHPC to UCSF Box - convenient for larger data transfers which you may not want to store on your personal machine.
-
-Wohoo! You're are now proficient enough to start using CoreHPC 😎. We can't wait to see all the cool science you'll do!
-
-## Beyond the basics
-
-### Overview of CoreHPC Nodes
-Sign into login, data transfer, and development nodes for logging in, transferring data, or prototyping / testing code. Simply `ssh log1@corehpc.ucsf.edu` or `ssh dt1@corehpc.ucsf.edu`. For development, you can`ssh dev1@corehpc.ucsf.edu` but you have to be logged into CoreHPC first. Here's a quick overview of all of CoreHPC's nodes:
-
-| Feature                                        | Login Nodes                                                         | Transfer Nodes                                         | Development Nodes                                                                                                                            | Compute Nodes                                 |
-| ---------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| **Hostname**                                   | `log[1-2].corehpc.ucsf.edu`                                          | `dt[1-2].corehpc.ucsf.edu`                              | `dev[1-3]`, `gpudev1`                                                                                                                        | …                                             |
-| **Purpose**                                    | *Submit and query jobs. SSH to development nodes. File management.* | *Fast in- & outbound file transfers. File management.* | *Compile and install software. Prototype and test job scripts. Submit and query jobs. Version control (clone, pull, push). File management.* | *Running short and long-running job scripts.* |
-| **Accessible via SSH from outside of cluster** | ✓ (2FA if outside of UCSF)                                          | ✓ (2FA if outside of UCSF)                             | no                                                                                                                                           | no                                            |
-| **Network speed**                              | 1 Gbps                                                              | 10 Gbps                                                | 1 Gbps                                                                                                                                       | 1,10,40 Gbps                                  |
-| **Core software**                              | Minimal                                                             | Minimal                                                | Same as compute nodes + compilers and source-code packages                                                                                   | Rocky 8 packages                              |
-| **Job submission**                             | ✓                                                                   | no                                                     | ✓                                                                                                                                            | ✓                                             |
-
-### CoreHPC Job Queues
-The cluster provides different queues that each is optimized for a different purpose. Some queues are faster because they are limited to 30min run times (`short.q`). Others are slower, but ensure that your job is allocated a GPU (`gpu.q`). 
-
-To specify a queue, use the flag `-q {queue_name_here}` when submitting a job, e.g., `qsub -q long.q my_submission_script.sh`.
-
-Here's a quick summary:
-
-| Queue Name | Maximum Runtime                                                        | Process Priority | Availability                                                       | Quota                                                                                    | Purpose                                                                      |
-| ---------- | ---------------------------------------------------------------------- | ---------------- | ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| **short.q**    | 30 minutes                                                             | 10 (medium)      | All compute nodes                                                  | 100 jobs per user                                                                        | Low-latency needs, e.g., pipeline prototyping and quick turn-around analysis |
-| **long.q**     | 2 weeks (336 hours)                                                    | 19 (lowest)      | All compute nodes                                                  | Unlimited                                                                                | General needs                                                                |
-| **member.q**   | 2 weeks (336 hours)                                                    | 0 (highest)      | All compute nodes (except GPU and institutionally purchased nodes) | Proportional to lab's [contributed share](https://corehpc.ucsf.edu/hpc/about/shares.html) | Research groups needing more resources than communal queues                  |
-| **gpu.q**      | 2 weeks (336 hours) (communal GPU nodes) or 2 hours (non-contributors) | 0 (highest)      | Specific GPU nodes                                                 | Unlimited                                                                                | Software utilizing GPUs                                                      |
-| **4gpu.q**     | 2 weeks (336 hours) (contributors) or 2 hours (non-contributors)       | 0 (highest)      | Specific "All-4-GPU" nodes                                         | Unlimited                                                                                | Software needing to utilize all four GPUs on the node                        |
-| **ondemand.q** | 2 weeks (336 hours)                                                    | 0 (highest)      | Institutionally purchased nodes                                    | Available upon application and approval                                                  | Scheduled high-priority computing needs or temporary paid priority access    |
-
-### Using Scratch Storage
-
-- All nodes (compute and development) have local storage mounted as `/scratch`. The `/scratch` storage is faster than system-wide storage such as home folders and `/corehpc/scratch`, making it ideal for holding intermediate data files. Using local `/scratch` reduces the load on system-wide storage and the local network, benefiting everyone.
-- As the name implies, `/scratch` is susceptible to deletion without warning by CoreHPC admin. Do not hold precious data on it.
-
-### Additional Info / Tips
-
-- **Email Notifications**: Get email notifications for job status by adding the flag `-m bea` to your `qsub` command, e.g., `qsub -m bea`.
-- **Disk Quota**: Check your disk quota with:
-  ```sh
-  beegfs-ctl --getquota --storagepoolid=11 --uid "$USER"
-  ```
-  - Note: The displayed quota is double the actual size. For example, if it shows 1 TB, you have 500 GB available. [See more](https://corehpc.ucsf.edu/hpc/howto/storage-size.html#user-disk-quota-on-corehpchome-or-corehpcprotectedhome).
-- There are some ways to automatically sign into nodes without typing in your password every time. You can also log directly into `dev` nodes without first going to a login node. [This tutorial](https://corehpc.ucsf.edu/hpc/howto/log-in-without-pwd.html) on the CoreHPC website will help.
+## Final Notes
 
 ### Good File System Practices (don't be *the* person who breaks CoreHPC)
 - **Distribute Files:** Spread out files across multiple directories, including SGE output and error files.
 - **Prefer Larger Files:** Use fewer, larger files rather than many small ones.
 - **Limit Directory I/O:** Keep the number of reads and writes to a single directory reasonable.
 
----
-
-## Need Help?
+### Need Help?
 - [CoreHPC Overview Website](https://it.ucsf.edu/service/corehpc)
 - [CoreHPC Overview](https://wiki.library.ucsf.edu/spaces/CHPC/overview)
 - [CoreHPC Access Primer](https://wiki.library.ucsf.edu/spaces/CHPC/pages/720396955/CoreHPC+Access+Primer)
