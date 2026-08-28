@@ -2,7 +2,7 @@
 
 This tutorial is designed to familiarize UCSF 1st year Biophysics students with CoreHPC and FAC - UCSF's primary High Performance Computing (HPC) resources. It covers everything from accessing your account to running your first job, providing the backbone knowledge required to efficiently use CoreHPC’s resources. By the end, you'll be comfortable navigating CoreHPC and setting up + submitting jobs.
 
-Credit: Most of the information from this page was cobbled together using content from [CoreHPC's wiki](https://wiki.library.ucsf.edu/spaces/CHPC/overview) + some writing and rewriting by Beau Lonnquist.
+Credit: Most of the information from this page was cobbled together using content from [CoreHPC's wiki](https://wiki.library.ucsf.edu/spaces/CHPC/overview). Please still explore the [CoreHPC wiki](https://wiki.library.ucsf.edu/spaces/CHPC/overview), as it contains the most up-to-date information and additional resources not included in this introduction.
 
 ### Outline
 - [Day 0: Introduction to CoreHPC](#day-0-introduction-to-corehpc)
