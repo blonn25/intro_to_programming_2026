@@ -375,27 +375,27 @@ Perhaps the most important - and also most confusing - aspect of CoreHPC is wher
 
 1. **User Home Storage**
 
-  This is your personal space on the CoreHPC cluster. You have 20GB of storage here and it will not be cleared during maintenance. Use this sparingly for small files and configuration files. This directory is not for heavy computational lifting.
+    This is your personal space on the CoreHPC cluster. You have 20GB of storage here and it will not be cleared during maintenance. Use this sparingly for small files and configuration files. This directory is not for heavy computational lifting.
 
-  Access your home directory by typing `cd` in the terminal, or explicitly specifying the path: `cd /home/remote/<user>`.
+    Access your home directory by typing `cd` in the terminal, or explicitly specifying the path: `cd /home/remote/<user>`.
 
 2. **User Scratch Storage**
 
-  This is your personal high-performance storage area for temporary files. It is not backed up and will be purged during quarterly CoreHPC/FAC maintanence. Use this for large datasets, intermediate files, and temporary outputs.
+    This is your personal high-performance storage area for temporary files. It is not backed up and will be purged during quarterly CoreHPC/FAC maintanence. Use this for large datasets, intermediate files, and temporary outputs.
 
-  Access your scratch directory by typing `cd /scratch/user/<user>` in the terminal.
+    Access your scratch directory by typing `cd /scratch/user/<user>` in the terminal.
 
 3. **Group Scratch Storage (FOR HEAVY COMPUTING)**
 
-  This is a shared storage area, and likely where you will perform most of your computational work. It is not backed up and may be purged during quarterly CoreHPC/FAC maintanence. This is an excellent choice for collaborative projects in your research group.
+    This is a shared storage area, and likely where you will perform most of your computational work. It is not backed up and may be purged during quarterly CoreHPC/FAC maintanence. This is an excellent choice for collaborative projects in your research group.
 
-  Access your group's scratch directory by typing `cd /mnt/scratch/group/CX500147_DS2` in the terminal. Do not store your filed directly in this directory. Instead, create a subdirectory with your username such as `/mnt/scratch/group/CX500147_DS2/<user>`.
+    Access your group's scratch directory by typing `cd /mnt/scratch/group/CX500147_DS2` in the terminal. Do not store your filed directly in this directory. Instead, create a subdirectory with your username such as `/mnt/scratch/group/CX500147_DS2/<user>`.
 
 4. **Group FAC Storage (FOR YOUR MOST IMPORTANT DATA)**
 
-  This is a shared storage area for collaborative projects. It is backed up and persistent, but has limited storage capacity. Use this for files that need to be accessed by multiple users, important data outputs from experiments, and any other data you may want access to long-term. You share this storage with the other students in your cohort, so please be mindful of your storage usage.
+    This is a shared storage area for collaborative projects. It is backed up and persistent, but has limited storage capacity. Use this for files that need to be accessed by multiple users, important data outputs from experiments, and any other data you may want access to long-term. You share this storage with the other students in your cohort, so please be mindful of your storage usage.
 
-  Access your group's FAC directory by typing `cd /mnt/fac/CX500147_DS2` in the terminal. Do not store your filed directly in this directory. Instead, create a subdirectory with your username such as `/mnt/fac/CX500147_DS2/<user>`.
+    Access your group's FAC directory by typing `cd /mnt/fac/CX500147_DS2` in the terminal. Do not store your filed directly in this directory. Instead, create a subdirectory with your username such as `/mnt/fac/CX500147_DS2/<user>`.
 
 My suggestion is to default to performing computation in your group scratch storage and saving any important outputs to your group FAC storage.
 
