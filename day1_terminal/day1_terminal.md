@@ -25,7 +25,6 @@ Walk through day, learning how to use the terminal.
 	   - Relative: `folder` vs `./folder` vs `~/folder` 
 	   - Abs: `/Users/zackmawaldi/folder`
 
-
 3. **File Operations**
    - **touch**
      - Creating an empty file.
@@ -49,6 +48,10 @@ Walk through day, learning how to use the terminal.
 	   - Basic navigation in vim (insert mode, normal mode).
       		- Change to insert mode `i`, revert to normal mode from insert mode `ESC` key
 	   - Saving (`:w`), exiting (`:q`), and save and exit in vim (`:wq`). Forceful action with `!` ex: `:q!`
+    - **Introduction to nano (my personal preference)**
+      - Opening a file in nano. `nano file.txt`
+      - Basic navigation in nano (moving the cursor, editing text).
+      - Saving (`Ctrl + O`), exiting (`Ctrl + X`), and canceling changes (`Ctrl + C`).
 
 5. **Piping and Redirection**
    - **Basic Piping (`|`)**
@@ -68,7 +71,15 @@ Walk through day, learning how to use the terminal.
    - **Running the Bash Script**
      - Execute the script from the terminal.
      - Interrupt terminal execultion by using `Control + c`
+7. **Connecting to Remote Servers**
+   - **SSH (Secure Shell)**
+     - Introduction to SSH for remote server access.
+     - Basic SSH command syntax: `ssh username@hostname`.
+     - Example: `ssh jdoe@chpc-ucsf-bastion-vm1.corehpc.ucsf.edu`
+       - See the [day0_corehpc.md](day0_corehpc/day0_corehpc.md#accessing-corehpc) tutorial for more details on connecting to CoreHPC.
 
 
 ### **If time allows, if not let's do next class:**
-- Download [VSCode](https://code.visualstudio.com)
+- Download [VSCode](https://code.visualstudio.com) is not already installed
+- Sign up for a [GitHub](https://github.com) account if you don't have one already
+  - Sign up for the [Github Student Developer Pack](https://education.github.com/pack)

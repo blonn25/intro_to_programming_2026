@@ -16,7 +16,7 @@ print('Hello, World')
 This will print "Hello, World" to the screen. Congratulations, you've just written and run your first Python program!
 
 ### 1.2 Basic Math in Python
-Python can handle basic arithmetic operations. Try running the following lines of code one by one:
+Python can handle basic arithmetic operations. Let's try it out by running Python from the command line. type `python` in your terminal and press Enter to start the Python interpreter. Then run the following lines of code one by one:
 
 ```python
 print(1 + 1)
@@ -28,7 +28,7 @@ print(5 ** 2)
 
 These examples demonstrate addition, subtraction, multiplication, and exponentiation. Notice how Python evaluates each expression and returns the result.
 
-You can also combine text with calculations in print statements:
+You can also combine text with calculations in print statements. Separate text and calculations with commas:
 
 ```python
 print('One kilobyte is 2^10 bytes, or', 2 ** 10, 'bytes')
@@ -67,7 +67,7 @@ print("This won't run")
 
 ---
 
-## Lesson 2: Variables and Strings
+## Lesson 2: Variables, Data Types, and Strings
 
 ### 2.1 Variables
 Variables store values that can be used and modified later in your program. Here’s a program that demonstrates variables:
@@ -84,7 +84,45 @@ v *= 5
 print("Now v equals", v)
 ```
 
-### 2.2 Strings
+### 2.2 Data Types
+Every value in Python has a data type, which determines what kind of data it holds and what you can do with it. You can check a variable's type with the built-in `type()` function:
+
+```python
+count = 5
+print(type(count))  # <class 'int'>
+
+price = 4.99
+print(type(price))  # <class 'float'>
+
+name = "Ada"
+print(type(name))  # <class 'str'>
+
+is_open = True
+print(type(is_open))  # <class 'bool'>
+```
+
+The four data types you'll use most often are:
+
+- **`int`** (integer): whole numbers, like `5` or `-12`
+- **`float`** (floating-point): numbers with a decimal point, like `4.99` or `-0.5`
+- **`str`** (string): text, wrapped in quotes, like `"Ada"`
+- **`bool`** (boolean): `True` or `False`, often the result of a comparison
+
+```python
+print(5 == 5)  # True
+print(5 > 10)  # False
+```
+
+Python will generally figure out a variable's type automatically based on the value you assign, but mixing types in an operation can cause errors or unexpected results:
+
+```python
+print(1 + 2.5)  # 3.5, an int and a float combine into a float
+print("5" + "5")  # "55", strings are joined together, not added numerically
+print(str(5) + "5")  # "55", int converted to a string
+print(int("5") + 5)  # 10, string converted to an int
+```
+
+### 2.3 Strings
 Variables can also hold text, known as strings. Here’s an example:
 
 ```python
@@ -127,7 +165,7 @@ lastWord = sentence[-4:-1]
 print(f"The sentence has {nrOfCharacters} characters and the last word is: {lastWord}")
 ```
 
-### 2.3 Tab Completion in VSCode
+### 2.4 Tab Completion in VSCode
 In modern IDEs like VSCode, you can use tab completion to explore methods available for a variable. Try typing `text.` and see the suggestions.
 
 You can also check a method's documentation by typing:
@@ -136,13 +174,14 @@ You can also check a method's documentation by typing:
 text.startswith?
 ```
 
-### 2.4 Taking user input.
+### 2.5 Taking user input.
 Python comes with a number of built-in functions that can be used right away. For example, the `input()` function prompts the user for input:
 
 ```python
 a = input("Type in something, and it will be repeated on screen: ")
 print(a)
 ```
+
 ## Exercise: Greeting and Age Calculator
 Given input of name and birth year, greet the user, and show the user their age.
 Expected behavior:
