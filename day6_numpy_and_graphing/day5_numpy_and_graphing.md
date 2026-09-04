@@ -1,7 +1,7 @@
 #### 0. Setting up a conda environment
-##### Step 1: Install Conda
+##### Step 1: Install Conda (you likely already have conda installed)
 ```bash
-# Downlaod miniconda installer:
+# Downlaod miniconda installer (you like):
 wget -O ./miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 # Then run the installer:
@@ -33,7 +33,7 @@ conda deactivate
 You'll notice that the environment name (`intro_to_prog`) appears before the command prompt, indicating that the environment is active.
 
 ##### Step 4: Install Numpy and Matplotlib
-Now, let's install `numpy` and `matplotlib` inside this environment using `pip`.
+Now, let's install `numpy` and `matplotlib` inside this environment using `pip`. Make sure that you have your `intro_to_prog` environment active!!
 
 ```bash
 pip install numpy matplotlib

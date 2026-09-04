@@ -71,6 +71,7 @@ Walk through day, learning how to use the terminal.
    - **Running the Bash Script**
      - Execute the script from the terminal.
      - Interrupt terminal execultion by using `Control + c`
+     
 7. **Connecting to Remote Servers**
    - **SSH (Secure Shell)**
      - Introduction to SSH for remote server access.
