@@ -153,7 +153,7 @@ The `open` function supports several modes, determining how the file is handled:
 | 'r'  | Read mode. Opens a file for reading (default).                                |
 | 'w'  | Write mode. Opens a file for writing (overwrites existing content).           |
 | 'a'  | Append mode. Opens a file for writing (appends to existing content).          |
-| 'r+' | Read and write mode. Opens a file for both reading and writing.               |
+| 'w+' | Read and write mode. Opens a file for both reading and writing.               |
 | 'b'  | Binary mode. Used with other modes (e.g., 'rb', 'wb') to handle binary files. |
 
 ## Exercise: DNA to RNA (`transcriber.py`)
