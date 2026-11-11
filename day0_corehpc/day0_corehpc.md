@@ -421,7 +421,8 @@ This is particularly useful for copying interesting scientific outputs to your g
 ### Need Help?
 - [CoreHPC Overview Website](https://it.ucsf.edu/service/corehpc)
 - [CoreHPC Overview](https://wiki.library.ucsf.edu/spaces/CHPC/overview)
-- [CoreHPC Access Primer](https://wiki.library.ucsf.edu/spaces/CHPC/pages/720396955/CoreHPC+Access+Primer)
+- [Connecting to CoreHPC](https://wiki.library.ucsf.edu/spaces/CHPC/pages/773295409/Connecting+to+CoreHPC)
+- [CoreHPC Quickstart Guide](https://wiki.library.ucsf.edu/spaces/CHPC/pages/773295449/CoreHPC+Quickstart+Guide)
 - [FAC Overview Website](https://it.ucsf.edu/service/facility-advanced-computing-fac)
 - **CoreHPC Staff Support**:
   - Email: [COREHPC-Support@ucsf.edu](mailto:COREHPC-Support@ucsf.edu), [FACTeam@ucsf.edu](mailto:FACTeam@ucsf.edu)
